@@ -8,6 +8,3 @@ services:
       context: .
       dockerfile: Dockerfile.prod
     container_name: allgurgel-desafio-go
-    #command: "ls"
-    #volumes:
-    #  - ./goapp:/go/bin
