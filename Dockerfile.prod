@@ -1,0 +1,23 @@
+FROM golang:alpine as builder
+
+
+ENV APP_PATH /go/src
+
+WORKDIR ${APP_PATH}
+
+
+COPY *.go ./
+
+RUN go mod init desafio && \
+  go mod download && \
+  go mod verify && \
+  go build
+
+
+FROM scratch
+ENV FILE /go/src/desafio
+
+
+COPY --from=builder ${FILE} .
+
+CMD [ "./desafio" ]
