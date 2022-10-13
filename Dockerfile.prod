@@ -11,7 +11,7 @@ COPY *.go ./
 RUN go mod init desafio && \
   go mod download && \
   go mod verify && \
-  go build
+  GOOS=linux CGO_ENABLE=0 go build -ldflags="-w -s"
 
 
 FROM scratch
